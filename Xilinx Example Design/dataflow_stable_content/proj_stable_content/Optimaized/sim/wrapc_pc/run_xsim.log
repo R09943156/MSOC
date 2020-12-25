@@ -1,0 +1,103 @@
+sum = 30
+
+C:\Xilinx\Vivado\2019.2\examples\design\dataflow_stable_content\proj_stable_content\solution1\sim\verilog>set PATH= 
+
+C:\Xilinx\Vivado\2019.2\examples\design\dataflow_stable_content\proj_stable_content\solution1\sim\verilog>call C:/Xilinx/Vivado/2019.2/bin/xelab xil_defaultlib.apatb_example_top glbl -prj example.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile "C:/Xilinx/Vivado/2019.2/data/xsim/ip/xsim_ip.ini" --lib "ieee_proposed=./ieee_proposed" -s example  
+INFO: [XSIM 43-3496] Using init file passed via -initfile option "C:/Xilinx/Vivado/2019.2/data/xsim/ip/xsim_ip.ini".
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_example_top glbl -prj example.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile C:/Xilinx/Vivado/2019.2/data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s example 
+Multi-threading is on. Using 6 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/AESL_autofifo_in1_strm_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_autofifo_in1_strm_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/AESL_autofifo_in2_strm_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_autofifo_in2_strm_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/AESL_autofifo_out_strm_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_autofifo_out_strm_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/AESL_deadlock_detection_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detect_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/AESL_deadlock_detector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/AESL_deadlock_report_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_report_unit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/example.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_example_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/example.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module example
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/example_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module example_tb_ram
+INFO: [VRFC 10-311] analyzing module example_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/fifo_w32_d4_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_w32_d4_A_shiftReg
+INFO: [VRFC 10-311] analyzing module fifo_w32_d4_A
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/readmem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module readmem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/readmemA.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module readmemA
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/readmemB.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module readmemB
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/start_for_readmembkb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module start_for_readmembkb_shiftReg
+INFO: [VRFC 10-311] analyzing module start_for_readmembkb
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.example_tb_ram
+Compiling module xil_defaultlib.example_tb(DataWidth=32,AddressR...
+Compiling module xil_defaultlib.readmemA
+Compiling module xil_defaultlib.readmemB
+Compiling module xil_defaultlib.fifo_w32_d4_A_shiftReg
+Compiling module xil_defaultlib.fifo_w32_d4_A
+Compiling module xil_defaultlib.start_for_readmembkb_shiftReg
+Compiling module xil_defaultlib.start_for_readmembkb
+Compiling module xil_defaultlib.readmem
+Compiling module xil_defaultlib.example
+Compiling module xil_defaultlib.AESL_autofifo_in1_strm_V
+Compiling module xil_defaultlib.AESL_autofifo_in2_strm_V
+Compiling module xil_defaultlib.AESL_autofifo_out_strm_V
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detect_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_report_unit(PROC_N...
+Compiling module xil_defaultlib.AESL_deadlock_detector_1
+Compiling module xil_defaultlib.apatb_example_top
+Compiling module work.glbl
+Built simulation snapshot example
+
+****** Webtalk v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/xsim.dir/example/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/xsim.dir/example/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Fri Dec 25 15:52:17 2020. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2019.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Fri Dec 25 15:52:17 2020...
+
+****** xsim v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/example/xsim_script.tcl
+# xsim {example} -autoloadwcfg -tclbatch {example.tcl}
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+source example.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "127000"
+// RTL Simulation : 1 / 1 [100.00%] @ "500000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 553610 ps : File "C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/solution1/sim/verilog/example.autotb.v" Line 326
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Dec 25 15:52:24 2020...
+sum = 30

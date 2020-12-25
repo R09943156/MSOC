@@ -1,0 +1,333 @@
+
+
+================================================================
+== Vivado HLS Report for 'readmemA'
+================================================================
+* Date:           Fri Dec 25 17:01:11 2020
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        proj_stable_content
+* Solution:       Optimaized
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 13.33 ns | 6.888 ns |   1.67 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |       11|       11| 0.147 us | 0.147 us |   10|   10| function |
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 1
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 10, depth = 12
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 12
+* Pipeline : 1
+  Pipeline-0 : II = 10, D = 12, States = { 1 2 3 4 5 6 7 8 9 10 11 12 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 6.88>
+ST_1 : Operation 13 [1/1] (3.63ns)   --->   "%tmp = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 13 'read' 'tmp' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%sext_ln24 = sext i32 %tmp to i64" [example.cpp:24]   --->   Operation 14 'sext' 'sext_ln24' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%tb_addr = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24" [example.cpp:24]   --->   Operation 15 'getelementptr' 'tb_addr' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [2/2] (3.25ns)   --->   "%tb_load = load i32* %tb_addr, align 4" [example.cpp:24]   --->   Operation 16 'load' 'tb_load' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 2 <SV = 1> <Delay = 6.88>
+ST_2 : Operation 17 [1/2] (3.25ns)   --->   "%tb_load = load i32* %tb_addr, align 4" [example.cpp:24]   --->   Operation 17 'load' 'tb_load' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_2 : Operation 18 [1/1] (2.47ns)   --->   "%icmp_ln25 = icmp slt i32 %tb_load, 10" [example.cpp:25]   --->   Operation 18 'icmp' 'icmp_ln25' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25, label %2, label %3" [example.cpp:25]   --->   Operation 19 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (3.63ns)   --->   "%tmp_11 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 20 'read' 'tmp_11' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%sext_ln24_1 = sext i32 %tmp_11 to i64" [example.cpp:24]   --->   Operation 21 'sext' 'sext_ln24_1' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%tb_addr_10 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_1" [example.cpp:24]   --->   Operation 22 'getelementptr' 'tb_addr_10' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 23 [2/2] (3.25ns)   --->   "%tb_load_10 = load i32* %tb_addr_10, align 4" [example.cpp:24]   --->   Operation 23 'load' 'tb_load_10' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 3 <SV = 2> <Delay = 6.88>
+ST_3 : Operation 24 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 24 'write' <Predicate = (!icmp_ln25)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_3 : Operation 25 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp)" [example.cpp:27]   --->   Operation 25 'write' <Predicate = (icmp_ln25)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_3 : Operation 26 [1/2] (3.25ns)   --->   "%tb_load_10 = load i32* %tb_addr_10, align 4" [example.cpp:24]   --->   Operation 26 'load' 'tb_load_10' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_3 : Operation 27 [1/1] (2.47ns)   --->   "%icmp_ln25_1 = icmp slt i32 %tb_load_10, 10" [example.cpp:25]   --->   Operation 27 'icmp' 'icmp_ln25_1' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 28 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_1, label %5, label %6" [example.cpp:25]   --->   Operation 28 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 29 [1/1] (3.63ns)   --->   "%tmp_12 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 29 'read' 'tmp_12' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_3 : Operation 30 [1/1] (0.00ns)   --->   "%sext_ln24_2 = sext i32 %tmp_12 to i64" [example.cpp:24]   --->   Operation 30 'sext' 'sext_ln24_2' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%tb_addr_11 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_2" [example.cpp:24]   --->   Operation 31 'getelementptr' 'tb_addr_11' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 32 [2/2] (3.25ns)   --->   "%tb_load_11 = load i32* %tb_addr_11, align 4" [example.cpp:24]   --->   Operation 32 'load' 'tb_load_11' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 4 <SV = 3> <Delay = 6.88>
+ST_4 : Operation 33 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 33 'write' <Predicate = (!icmp_ln25_1)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_4 : Operation 34 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_11)" [example.cpp:27]   --->   Operation 34 'write' <Predicate = (icmp_ln25_1)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_4 : Operation 35 [1/2] (3.25ns)   --->   "%tb_load_11 = load i32* %tb_addr_11, align 4" [example.cpp:24]   --->   Operation 35 'load' 'tb_load_11' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_4 : Operation 36 [1/1] (2.47ns)   --->   "%icmp_ln25_2 = icmp slt i32 %tb_load_11, 10" [example.cpp:25]   --->   Operation 36 'icmp' 'icmp_ln25_2' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 37 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_2, label %8, label %9" [example.cpp:25]   --->   Operation 37 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 38 [1/1] (3.63ns)   --->   "%tmp_13 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 38 'read' 'tmp_13' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_4 : Operation 39 [1/1] (0.00ns)   --->   "%sext_ln24_3 = sext i32 %tmp_13 to i64" [example.cpp:24]   --->   Operation 39 'sext' 'sext_ln24_3' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 40 [1/1] (0.00ns)   --->   "%tb_addr_12 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_3" [example.cpp:24]   --->   Operation 40 'getelementptr' 'tb_addr_12' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 41 [2/2] (3.25ns)   --->   "%tb_load_12 = load i32* %tb_addr_12, align 4" [example.cpp:24]   --->   Operation 41 'load' 'tb_load_12' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 5 <SV = 4> <Delay = 6.88>
+ST_5 : Operation 42 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 42 'write' <Predicate = (!icmp_ln25_2)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_5 : Operation 43 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_12)" [example.cpp:27]   --->   Operation 43 'write' <Predicate = (icmp_ln25_2)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_5 : Operation 44 [1/2] (3.25ns)   --->   "%tb_load_12 = load i32* %tb_addr_12, align 4" [example.cpp:24]   --->   Operation 44 'load' 'tb_load_12' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_5 : Operation 45 [1/1] (2.47ns)   --->   "%icmp_ln25_3 = icmp slt i32 %tb_load_12, 10" [example.cpp:25]   --->   Operation 45 'icmp' 'icmp_ln25_3' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 46 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_3, label %11, label %12" [example.cpp:25]   --->   Operation 46 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 47 [1/1] (3.63ns)   --->   "%tmp_14 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 47 'read' 'tmp_14' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_5 : Operation 48 [1/1] (0.00ns)   --->   "%sext_ln24_4 = sext i32 %tmp_14 to i64" [example.cpp:24]   --->   Operation 48 'sext' 'sext_ln24_4' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 49 [1/1] (0.00ns)   --->   "%tb_addr_13 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_4" [example.cpp:24]   --->   Operation 49 'getelementptr' 'tb_addr_13' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 50 [2/2] (3.25ns)   --->   "%tb_load_13 = load i32* %tb_addr_13, align 4" [example.cpp:24]   --->   Operation 50 'load' 'tb_load_13' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 6 <SV = 5> <Delay = 6.88>
+ST_6 : Operation 51 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 51 'write' <Predicate = (!icmp_ln25_3)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_6 : Operation 52 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_13)" [example.cpp:27]   --->   Operation 52 'write' <Predicate = (icmp_ln25_3)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_6 : Operation 53 [1/2] (3.25ns)   --->   "%tb_load_13 = load i32* %tb_addr_13, align 4" [example.cpp:24]   --->   Operation 53 'load' 'tb_load_13' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_6 : Operation 54 [1/1] (2.47ns)   --->   "%icmp_ln25_4 = icmp slt i32 %tb_load_13, 10" [example.cpp:25]   --->   Operation 54 'icmp' 'icmp_ln25_4' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 55 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_4, label %14, label %15" [example.cpp:25]   --->   Operation 55 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 56 [1/1] (3.63ns)   --->   "%tmp_15 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 56 'read' 'tmp_15' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_6 : Operation 57 [1/1] (0.00ns)   --->   "%sext_ln24_5 = sext i32 %tmp_15 to i64" [example.cpp:24]   --->   Operation 57 'sext' 'sext_ln24_5' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 58 [1/1] (0.00ns)   --->   "%tb_addr_14 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_5" [example.cpp:24]   --->   Operation 58 'getelementptr' 'tb_addr_14' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 59 [2/2] (3.25ns)   --->   "%tb_load_14 = load i32* %tb_addr_14, align 4" [example.cpp:24]   --->   Operation 59 'load' 'tb_load_14' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 7 <SV = 6> <Delay = 6.88>
+ST_7 : Operation 60 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 60 'write' <Predicate = (!icmp_ln25_4)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_7 : Operation 61 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_14)" [example.cpp:27]   --->   Operation 61 'write' <Predicate = (icmp_ln25_4)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_7 : Operation 62 [1/2] (3.25ns)   --->   "%tb_load_14 = load i32* %tb_addr_14, align 4" [example.cpp:24]   --->   Operation 62 'load' 'tb_load_14' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_7 : Operation 63 [1/1] (2.47ns)   --->   "%icmp_ln25_5 = icmp slt i32 %tb_load_14, 10" [example.cpp:25]   --->   Operation 63 'icmp' 'icmp_ln25_5' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 64 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_5, label %17, label %18" [example.cpp:25]   --->   Operation 64 'br' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 65 [1/1] (3.63ns)   --->   "%tmp_16 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 65 'read' 'tmp_16' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_7 : Operation 66 [1/1] (0.00ns)   --->   "%sext_ln24_6 = sext i32 %tmp_16 to i64" [example.cpp:24]   --->   Operation 66 'sext' 'sext_ln24_6' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 67 [1/1] (0.00ns)   --->   "%tb_addr_15 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_6" [example.cpp:24]   --->   Operation 67 'getelementptr' 'tb_addr_15' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 68 [2/2] (3.25ns)   --->   "%tb_load_15 = load i32* %tb_addr_15, align 4" [example.cpp:24]   --->   Operation 68 'load' 'tb_load_15' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 8 <SV = 7> <Delay = 6.88>
+ST_8 : Operation 69 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 69 'write' <Predicate = (!icmp_ln25_5)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_8 : Operation 70 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_15)" [example.cpp:27]   --->   Operation 70 'write' <Predicate = (icmp_ln25_5)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_8 : Operation 71 [1/2] (3.25ns)   --->   "%tb_load_15 = load i32* %tb_addr_15, align 4" [example.cpp:24]   --->   Operation 71 'load' 'tb_load_15' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_8 : Operation 72 [1/1] (2.47ns)   --->   "%icmp_ln25_6 = icmp slt i32 %tb_load_15, 10" [example.cpp:25]   --->   Operation 72 'icmp' 'icmp_ln25_6' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 73 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_6, label %20, label %21" [example.cpp:25]   --->   Operation 73 'br' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 74 [1/1] (3.63ns)   --->   "%tmp_17 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 74 'read' 'tmp_17' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_8 : Operation 75 [1/1] (0.00ns)   --->   "%sext_ln24_7 = sext i32 %tmp_17 to i64" [example.cpp:24]   --->   Operation 75 'sext' 'sext_ln24_7' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 76 [1/1] (0.00ns)   --->   "%tb_addr_16 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_7" [example.cpp:24]   --->   Operation 76 'getelementptr' 'tb_addr_16' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 77 [2/2] (3.25ns)   --->   "%tb_load_16 = load i32* %tb_addr_16, align 4" [example.cpp:24]   --->   Operation 77 'load' 'tb_load_16' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 9 <SV = 8> <Delay = 6.88>
+ST_9 : Operation 78 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 78 'write' <Predicate = (!icmp_ln25_6)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_9 : Operation 79 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_16)" [example.cpp:27]   --->   Operation 79 'write' <Predicate = (icmp_ln25_6)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_9 : Operation 80 [1/2] (3.25ns)   --->   "%tb_load_16 = load i32* %tb_addr_16, align 4" [example.cpp:24]   --->   Operation 80 'load' 'tb_load_16' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_9 : Operation 81 [1/1] (2.47ns)   --->   "%icmp_ln25_7 = icmp slt i32 %tb_load_16, 10" [example.cpp:25]   --->   Operation 81 'icmp' 'icmp_ln25_7' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 82 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_7, label %23, label %24" [example.cpp:25]   --->   Operation 82 'br' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 83 [1/1] (3.63ns)   --->   "%tmp_18 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 83 'read' 'tmp_18' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_9 : Operation 84 [1/1] (0.00ns)   --->   "%sext_ln24_8 = sext i32 %tmp_18 to i64" [example.cpp:24]   --->   Operation 84 'sext' 'sext_ln24_8' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 85 [1/1] (0.00ns)   --->   "%tb_addr_17 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_8" [example.cpp:24]   --->   Operation 85 'getelementptr' 'tb_addr_17' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 86 [2/2] (3.25ns)   --->   "%tb_load_17 = load i32* %tb_addr_17, align 4" [example.cpp:24]   --->   Operation 86 'load' 'tb_load_17' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 10 <SV = 9> <Delay = 6.88>
+ST_10 : Operation 87 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 87 'write' <Predicate = (!icmp_ln25_7)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_10 : Operation 88 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_17)" [example.cpp:27]   --->   Operation 88 'write' <Predicate = (icmp_ln25_7)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_10 : Operation 89 [1/2] (3.25ns)   --->   "%tb_load_17 = load i32* %tb_addr_17, align 4" [example.cpp:24]   --->   Operation 89 'load' 'tb_load_17' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_10 : Operation 90 [1/1] (2.47ns)   --->   "%icmp_ln25_8 = icmp slt i32 %tb_load_17, 10" [example.cpp:25]   --->   Operation 90 'icmp' 'icmp_ln25_8' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 91 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_8, label %26, label %27" [example.cpp:25]   --->   Operation 91 'br' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 92 [1/1] (3.63ns)   --->   "%tmp_19 = call i32 @_ssdm_op_Read.ap_fifo.volatile.i32P(i32* %in_strm_V)" [example.cpp:23]   --->   Operation 92 'read' 'tmp_19' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_10 : Operation 93 [1/1] (0.00ns)   --->   "%sext_ln24_9 = sext i32 %tmp_19 to i64" [example.cpp:24]   --->   Operation 93 'sext' 'sext_ln24_9' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 94 [1/1] (0.00ns)   --->   "%tb_addr_18 = getelementptr [10 x i32]* %tb, i64 0, i64 %sext_ln24_9" [example.cpp:24]   --->   Operation 94 'getelementptr' 'tb_addr_18' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 95 [2/2] (3.25ns)   --->   "%tb_load_18 = load i32* %tb_addr_18, align 4" [example.cpp:24]   --->   Operation 95 'load' 'tb_load_18' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+
+State 11 <SV = 10> <Delay = 5.72>
+ST_11 : Operation 96 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 96 'write' <Predicate = (!icmp_ln25_8)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_11 : Operation 97 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_18)" [example.cpp:27]   --->   Operation 97 'write' <Predicate = (icmp_ln25_8)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_11 : Operation 98 [1/2] (3.25ns)   --->   "%tb_load_18 = load i32* %tb_addr_18, align 4" [example.cpp:24]   --->   Operation 98 'load' 'tb_load_18' <Predicate = true> <Delay = 3.25> <Core = "RAM_2P_BRAM">   --->   Core 42 'RAM_2P_BRAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 10> <RAM>
+ST_11 : Operation 99 [1/1] (2.47ns)   --->   "%icmp_ln25_9 = icmp slt i32 %tb_load_18, 10" [example.cpp:25]   --->   Operation 99 'icmp' 'icmp_ln25_9' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 100 [1/1] (0.00ns)   --->   "br i1 %icmp_ln25_9, label %29, label %30" [example.cpp:25]   --->   Operation 100 'br' <Predicate = true> <Delay = 0.00>
+
+State 12 <SV = 11> <Delay = 3.63>
+ST_12 : Operation 101 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecInterface(i32* %req_strm_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 101 'specinterface' 'empty' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 102 [1/1] (0.00ns)   --->   "%empty_5 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %in_strm_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 102 'specinterface' 'empty_5' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 103 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecStableContent([10 x i32]* %tb) nounwind"   --->   Operation 103 'specstablecontent' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 104 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecMemCore([10 x i32]* %tb, [1 x i8]* @p_str, [12 x i8]* @p_str4, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 104 'specmemcore' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 105 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [example.cpp:19]   --->   Operation 105 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 106 [1/1] (0.00ns)   --->   "br label %1"   --->   Operation 106 'br' <Predicate = (!icmp_ln25)> <Delay = 0.00>
+ST_12 : Operation 107 [1/1] (0.00ns)   --->   "br label %1" [example.cpp:28]   --->   Operation 107 'br' <Predicate = (icmp_ln25)> <Delay = 0.00>
+ST_12 : Operation 108 [1/1] (0.00ns)   --->   "br label %4"   --->   Operation 108 'br' <Predicate = (!icmp_ln25_1)> <Delay = 0.00>
+ST_12 : Operation 109 [1/1] (0.00ns)   --->   "br label %4" [example.cpp:28]   --->   Operation 109 'br' <Predicate = (icmp_ln25_1)> <Delay = 0.00>
+ST_12 : Operation 110 [1/1] (0.00ns)   --->   "br label %7"   --->   Operation 110 'br' <Predicate = (!icmp_ln25_2)> <Delay = 0.00>
+ST_12 : Operation 111 [1/1] (0.00ns)   --->   "br label %7" [example.cpp:28]   --->   Operation 111 'br' <Predicate = (icmp_ln25_2)> <Delay = 0.00>
+ST_12 : Operation 112 [1/1] (0.00ns)   --->   "br label %10"   --->   Operation 112 'br' <Predicate = (!icmp_ln25_3)> <Delay = 0.00>
+ST_12 : Operation 113 [1/1] (0.00ns)   --->   "br label %10" [example.cpp:28]   --->   Operation 113 'br' <Predicate = (icmp_ln25_3)> <Delay = 0.00>
+ST_12 : Operation 114 [1/1] (0.00ns)   --->   "br label %13"   --->   Operation 114 'br' <Predicate = (!icmp_ln25_4)> <Delay = 0.00>
+ST_12 : Operation 115 [1/1] (0.00ns)   --->   "br label %13" [example.cpp:28]   --->   Operation 115 'br' <Predicate = (icmp_ln25_4)> <Delay = 0.00>
+ST_12 : Operation 116 [1/1] (0.00ns)   --->   "br label %16"   --->   Operation 116 'br' <Predicate = (!icmp_ln25_5)> <Delay = 0.00>
+ST_12 : Operation 117 [1/1] (0.00ns)   --->   "br label %16" [example.cpp:28]   --->   Operation 117 'br' <Predicate = (icmp_ln25_5)> <Delay = 0.00>
+ST_12 : Operation 118 [1/1] (0.00ns)   --->   "br label %19"   --->   Operation 118 'br' <Predicate = (!icmp_ln25_6)> <Delay = 0.00>
+ST_12 : Operation 119 [1/1] (0.00ns)   --->   "br label %19" [example.cpp:28]   --->   Operation 119 'br' <Predicate = (icmp_ln25_6)> <Delay = 0.00>
+ST_12 : Operation 120 [1/1] (0.00ns)   --->   "br label %22"   --->   Operation 120 'br' <Predicate = (!icmp_ln25_7)> <Delay = 0.00>
+ST_12 : Operation 121 [1/1] (0.00ns)   --->   "br label %22" [example.cpp:28]   --->   Operation 121 'br' <Predicate = (icmp_ln25_7)> <Delay = 0.00>
+ST_12 : Operation 122 [1/1] (0.00ns)   --->   "br label %25"   --->   Operation 122 'br' <Predicate = (!icmp_ln25_8)> <Delay = 0.00>
+ST_12 : Operation 123 [1/1] (0.00ns)   --->   "br label %25" [example.cpp:28]   --->   Operation 123 'br' <Predicate = (icmp_ln25_8)> <Delay = 0.00>
+ST_12 : Operation 124 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 0)" [example.cpp:31]   --->   Operation 124 'write' <Predicate = (!icmp_ln25_9)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_12 : Operation 125 [1/1] (0.00ns)   --->   "br label %28"   --->   Operation 125 'br' <Predicate = (!icmp_ln25_9)> <Delay = 0.00>
+ST_12 : Operation 126 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i32P(i32* %req_strm_V, i32 %tmp_19)" [example.cpp:27]   --->   Operation 126 'write' <Predicate = (icmp_ln25_9)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 4> <FIFO>
+ST_12 : Operation 127 [1/1] (0.00ns)   --->   "br label %28" [example.cpp:28]   --->   Operation 127 'br' <Predicate = (icmp_ln25_9)> <Delay = 0.00>
+ST_12 : Operation 128 [1/1] (0.00ns)   --->   "ret void" [example.cpp:34]   --->   Operation 128 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 13.3ns, clock uncertainty: 1.67ns.
+
+ <State 1>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [9]  (3.63 ns)
+	'getelementptr' operation ('tb_addr', example.cpp:24) [11]  (0 ns)
+	'load' operation ('tb_load', example.cpp:24) on array 'tb' [12]  (3.25 ns)
+
+ <State 2>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [22]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_10', example.cpp:24) [24]  (0 ns)
+	'load' operation ('tb_load_10', example.cpp:24) on array 'tb' [25]  (3.25 ns)
+
+ <State 3>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [35]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_11', example.cpp:24) [37]  (0 ns)
+	'load' operation ('tb_load_11', example.cpp:24) on array 'tb' [38]  (3.25 ns)
+
+ <State 4>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [48]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_12', example.cpp:24) [50]  (0 ns)
+	'load' operation ('tb_load_12', example.cpp:24) on array 'tb' [51]  (3.25 ns)
+
+ <State 5>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [61]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_13', example.cpp:24) [63]  (0 ns)
+	'load' operation ('tb_load_13', example.cpp:24) on array 'tb' [64]  (3.25 ns)
+
+ <State 6>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [74]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_14', example.cpp:24) [76]  (0 ns)
+	'load' operation ('tb_load_14', example.cpp:24) on array 'tb' [77]  (3.25 ns)
+
+ <State 7>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [87]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_15', example.cpp:24) [89]  (0 ns)
+	'load' operation ('tb_load_15', example.cpp:24) on array 'tb' [90]  (3.25 ns)
+
+ <State 8>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [100]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_16', example.cpp:24) [102]  (0 ns)
+	'load' operation ('tb_load_16', example.cpp:24) on array 'tb' [103]  (3.25 ns)
+
+ <State 9>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [113]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_17', example.cpp:24) [115]  (0 ns)
+	'load' operation ('tb_load_17', example.cpp:24) on array 'tb' [116]  (3.25 ns)
+
+ <State 10>: 6.89ns
+The critical path consists of the following:
+	fifo read on port 'in_strm_V' (example.cpp:23) [126]  (3.63 ns)
+	'getelementptr' operation ('tb_addr_18', example.cpp:24) [128]  (0 ns)
+	'load' operation ('tb_load_18', example.cpp:24) on array 'tb' [129]  (3.25 ns)
+
+ <State 11>: 5.73ns
+The critical path consists of the following:
+	'load' operation ('tb_load_18', example.cpp:24) on array 'tb' [129]  (3.25 ns)
+	'icmp' operation ('icmp_ln25_9', example.cpp:25) [130]  (2.47 ns)
+
+ <State 12>: 3.63ns
+The critical path consists of the following:
+	fifo write on port 'req_strm_V' (example.cpp:31) [133]  (3.63 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

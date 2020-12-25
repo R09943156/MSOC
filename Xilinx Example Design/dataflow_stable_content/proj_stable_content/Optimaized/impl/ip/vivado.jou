@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Fri Dec 25 17:03:02 2020
+# Process ID: 5184
+# Current directory: C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/Optimaized/impl/ip
+# Command line: vivado.exe -notrace -mode batch -source run_ippack.tcl
+# Log file: C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/Optimaized/impl/ip/vivado.log
+# Journal file: C:/Xilinx/Vivado/2019.2/examples/design/dataflow_stable_content/proj_stable_content/Optimaized/impl/ip\vivado.jou
+#-----------------------------------------------------------
+source run_ippack.tcl -notrace
