@@ -68,6 +68,6 @@
   Denoise the signal in whole system including host code and HLS. 
 
 ## Contact
-郭冠緯 r09943156@ntu.edu.tw  \
-朱柏彥 r08943178@ntu.edu.tw  \
+郭冠緯 r09943156@ntu.edu.tw   \
+朱柏彥 r08943178@ntu.edu.tw   \
 陳帝宇 r09943018@ntu.edu.tw
