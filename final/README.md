@@ -1,8 +1,8 @@
 # NTU MSOC team17 Final Project
 
 
-## Table of Contents
-[TOC]
+## Table of Contents  
+[TOC]  
 
 
 ## About The Project
