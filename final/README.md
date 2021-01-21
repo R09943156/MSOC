@@ -15,9 +15,15 @@
 
  - README.md
  - code/
-   - 123
- - abc/
-   - bcd
+   - original source code
+   - final (use inline pragma)
+ - code-opt/ (Note it may have multiple code directories for different code structure, named by code-opt (opt refer to optimization method, e.g. code-OoO Out-Of-Order))
+   - dataflow
+   - pipeline
+ - testdata/ - include input test data, and output result data
+ - script/ - makefile
+   - Build process shall include a trial-run with result check.
+ - impl/ - result of the implementation, only the metafile, and report, e.g. vitis summary file, HLS csynth report
 
 ## Usage
  - build process
