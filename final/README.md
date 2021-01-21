@@ -56,7 +56,7 @@
 ## Algorithm
   The fractional fourier transform is a generalization of ordinary fourier transform with a tunable parameter "a", whose meaning is to perform "a" times of fourier transform.\
   This project implements the eigenvalue decomposition-type descrete fractional fourier fransform which is the most friendly for hardware implementation.\
-  The eigenvalue decomposition-type descrete fractional fourier fransform simplifies the algorithm into eigenspace mapping/demapping and one element-wise complex-variable vector multiplication.\
+  The eigenvalue decomposition-type descrete fractional fourier fransform simplifies the algorithm into eigenspace mapping/demapping and one element-wise complex-variable vector multiplication.
 
 
 ## References
